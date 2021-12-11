@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "MigrationsDbConnection": "Data Source=localhost;Initial Catalog=MigrationsDB;Trusted_Connection=True;"
+  }
+}

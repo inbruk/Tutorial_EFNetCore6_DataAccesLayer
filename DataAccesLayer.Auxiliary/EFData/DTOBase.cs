@@ -1,4 +1,4 @@
-﻿namespace DataAccessLayer.Auxiliary
+﻿namespace DataAccessLayer.Auxiliary.EFData
 {
     public class DTOBase
     {

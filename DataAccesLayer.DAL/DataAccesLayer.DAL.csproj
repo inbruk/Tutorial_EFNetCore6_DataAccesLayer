@@ -18,7 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccesLayer.Auxiliary\DataAccesLayer.Auxiliary.csproj" />
     <ProjectReference Include="..\DataAccesLayer.DL\DataAccesLayer.DL.csproj" />
-    <ProjectReference Include="..\DataAccesLayer.DTO\DataAccesLayer.DTO.csproj" />
   </ItemGroup>
 
 </Project>

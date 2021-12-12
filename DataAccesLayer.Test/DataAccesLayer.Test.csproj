@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -21,9 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Migs.Auxiliary\Migs.Auxiliary.csproj" />
-    <ProjectReference Include="..\Migs.DL\Migs.DL.csproj" />
-    <ProjectReference Include="..\Migs.DTO\Migs.DTO.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.Auxiliary\DataAccesLayer.Auxiliary.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.DAL\DataAccesLayer.DAL.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.DL\DataAccesLayer.DL.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.DTO\DataAccesLayer.DTO.csproj" />
   </ItemGroup>
 
 </Project>

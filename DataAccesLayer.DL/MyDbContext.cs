@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
-using Migs.DL.Entity;
-using Migs.Auxiliary.Helpers;
+using DataAccessLayer.DL.Entity;
+using DataAccessLayer.Auxiliary.Helpers;
 
 namespace Migrations.Test
 {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DTO = Migs.DTO;
+using DTO = DataAccessLayer.DTO;
 
-namespace Migs.DL.Entity
+namespace DataAccessLayer.DL.Entity
 {
     public class Car : DTO.Car
     {

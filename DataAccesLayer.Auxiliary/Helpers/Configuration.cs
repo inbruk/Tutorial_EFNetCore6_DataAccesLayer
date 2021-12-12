@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Migs.Auxiliary.Helpers
+namespace DataAccessLayer.Auxiliary.Helpers
 {
     public static class Configuration
     {

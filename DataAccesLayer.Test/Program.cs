@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Migs.DTO;
-using Migs.DL;
+using DataAccessLayer.DTO;
+using DataAccessLayer.DL;
 
 namespace Migrations.Test
 

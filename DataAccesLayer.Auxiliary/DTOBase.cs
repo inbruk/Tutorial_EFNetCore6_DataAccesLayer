@@ -1,4 +1,4 @@
-﻿namespace Migs.Auxiliary
+﻿namespace DataAccessLayer.Auxiliary
 {
     public class DTOBase
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Migs.Auxiliary;
+using DataAccessLayer.Auxiliary;
 
-namespace Migs.DTO
+namespace DataAccessLayer.DTO
 {
     public class Person : DTOBase
     {

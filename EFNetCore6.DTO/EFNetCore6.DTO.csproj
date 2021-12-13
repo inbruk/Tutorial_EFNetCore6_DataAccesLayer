@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EFNetCore6.Auxiliary\EFNetCore6.Auxiliary.csproj" />
+  </ItemGroup>
+
 </Project>

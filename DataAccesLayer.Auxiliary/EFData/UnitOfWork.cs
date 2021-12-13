@@ -8,15 +8,16 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DataAccessLayer.Auxiliary.EFData
 {
     public class UnitOfWork<CTX> : IUnitOfWork<CTX>
-        where CTX : DbContext
+        where CTX : DbContext, new()
     {
         private bool _disposed;
-        private CTX _dbContext;
-        private Dictionary<Type, object> _repositories;
+        private CTX _dbContext = new CTX();
+        private Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
         /// <summary>
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
@@ -24,21 +25,12 @@ namespace DataAccessLayer.Auxiliary.EFData
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repositry</param>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IGenericRepository{TEntity}"/> interface.</returns>
-        public IGenericRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = false) where TEntity : class
+        public IGenericRepository<TEntity,CTX> GetRepository<TEntity>() 
+            where TEntity : class
         {
             if (_repositories == null)
             {
                 _repositories = new Dictionary<Type, object>();
-            }
-
-            // what's the best way to support custom reposity?
-            if (hasCustomRepository)
-            {
-                var customRepo = _dbContext.GetService<IGenericRepository<TEntity,CTX>>();
-                if (customRepo != null)
-                {
-                    return customRepo;
-                }
             }
 
             var type = typeof(TEntity);
@@ -58,7 +50,7 @@ namespace DataAccessLayer.Auxiliary.EFData
         /// <returns>The number of state entities written to database.</returns>
         public int ExecuteSqlCommand(string sql, params object[] parameters)
         {
-            return _dbContext.Database.ExecuteSqlCommand(sql, parameters);
+            return _dbContext.Database.ExecuteSqlRaw(sql, parameters);
         }
 
         /// <summary>
@@ -68,16 +60,16 @@ namespace DataAccessLayer.Auxiliary.EFData
         /// <param name="sql">The raw SQL.</param>
         /// <param name="parameters">The parameters.</param>
         /// <returns>An <see cref="IQueryable{T}" /> that contains elements that satisfy the condition specified by raw SQL.</returns>
-        public IQueryable<TEntity> FromSql<TEntity>(string sql, params object[] parameters) where TEntity
+        public IQueryable<TEntity> FromSql<TEntity>(string sql, params object[] parameters) where TEntity : class
         {
-            return _dbContext.Set<TEntity>().FromSql(sql, parameters);
+            return _dbContext.Set<TEntity>().FromSqlRaw(sql, parameters);
         }
 
         /// <summary>
         /// Saves all changes made in this context to the database.
         /// </summary>
         /// <returns>The number of state entries written to the database.</returns>
-        public int SaveChanges(bool ensureAutoHistory = false)
+        public int SaveChanges()
         {
             return _dbContext.SaveChanges();
         }
@@ -86,7 +78,7 @@ namespace DataAccessLayer.Auxiliary.EFData
         /// Asynchronously saves all changes made in this unit of work to the database.
         /// </summary>
         /// <returns>A <see cref="Task{TResult}"/> that represents the asynchronous save operation. The task result contains the number of state entities written to database.</returns>
-        public async Task<int> SaveChangesAsync(bool ensureAutoHistory = false)
+        public async Task<int> SaveChangesAsync()
         {
             return await _dbContext.SaveChangesAsync();
         }

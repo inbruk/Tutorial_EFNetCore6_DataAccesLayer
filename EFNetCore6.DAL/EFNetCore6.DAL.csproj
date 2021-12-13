@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccesLayer.Auxiliary\EFNetCore6.Auxiliary.csproj" />
     <ProjectReference Include="..\DataAccesLayer.DL\EFNetCore6.DL.csproj" />
   </ItemGroup>
 

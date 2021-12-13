@@ -20,11 +20,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DataAccesLayer.Auxiliary\EFNetCore6.Auxiliary.csproj" />
-    <ProjectReference Include="..\DataAccesLayer.DAL\EFNetCore6.DAL.csproj" />
-    <ProjectReference Include="..\DataAccesLayer.DL\EFNetCore6.DL.csproj" />
-    <ProjectReference Include="..\DataAccesLayer.DTO\EFNetCore6.DTO.csproj" />
-  </ItemGroup>
-
 </Project>

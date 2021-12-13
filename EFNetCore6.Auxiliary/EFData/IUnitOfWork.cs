@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.Auxiliary.EFData
+namespace EFNetCore6.Auxiliary.EFData
 {
     public interface IUnitOfWork<CTX> : IDisposable
         where CTX : DbContext

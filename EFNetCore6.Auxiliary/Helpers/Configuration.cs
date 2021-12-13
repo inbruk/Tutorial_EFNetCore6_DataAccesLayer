@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace DataAccessLayer.Auxiliary.Helpers
+namespace EFNetCore6.Auxiliary.Helpers
 {
     public static class Configuration
     {

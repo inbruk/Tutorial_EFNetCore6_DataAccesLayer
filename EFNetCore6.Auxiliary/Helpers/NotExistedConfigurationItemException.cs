@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Auxiliary.Helpers
+namespace EFNetCore6.Auxiliary.Helpers
 {
     [Serializable]
     public class NotExistedConfigurationItemException : Exception

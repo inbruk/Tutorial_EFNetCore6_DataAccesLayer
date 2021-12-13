@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.Auxiliary.EFData
+namespace EFNetCore6.Auxiliary.EFData
 {
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)

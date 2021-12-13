@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DataAccessLayer.Auxiliary;
+using EFNetCore6.Auxiliary;
 
-namespace DataAccessLayer.DTO
+namespace EFNetCore6.DTO
 {
     public class Person : DTOBase
     {

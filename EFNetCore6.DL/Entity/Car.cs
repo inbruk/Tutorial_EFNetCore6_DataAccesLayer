@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DTO = DataAccessLayer.DTO;
+using DTO = EFNetCore6.DTO;
 
-namespace DataAccessLayer.DL.Entity
+namespace EFNetCore6.DL.Entity
 {
     public class Car : DTO.Car
     {

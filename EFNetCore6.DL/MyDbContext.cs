@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
-using DataAccessLayer.DL.Entity;
-using DataAccessLayer.Auxiliary.Helpers;
+using EFNetCore6.DL.Entity;
+using EFNetCore6.Auxiliary.Helpers;
 
-namespace DataAccessLayer.DL
+namespace EFNetCore6.DL
 {
     // Внимание !!! Для миграции через nuget менеджер пакетов ( Add-Migration InitialCreate ), обязательно выставлять Default Project.
     // Или миграцию делать с консоли через dotnet ef migration InitialCreate. После миграции делать Update-Database, или dotnet ef database update 

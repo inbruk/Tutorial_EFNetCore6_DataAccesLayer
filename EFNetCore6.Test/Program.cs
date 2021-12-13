@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DataAccessLayer.DTO;
-using DataAccessLayer.DL;
+using EFNetCore6.DTO;
+using EFNetCore6.DL;
 
 namespace Migrations.Test
 

@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -16,8 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccesLayer.Auxiliary\DataAccesLayer.Auxiliary.csproj" />
-    <ProjectReference Include="..\DataAccesLayer.DL\DataAccesLayer.DL.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.Auxiliary\EFNetCore6.Auxiliary.csproj" />
+    <ProjectReference Include="..\DataAccesLayer.DTO\EFNetCore6.DTO.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="app_settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

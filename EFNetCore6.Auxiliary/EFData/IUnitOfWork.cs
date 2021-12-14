@@ -2,15 +2,14 @@
 
 namespace EFNetCore6.Auxiliary.EFData
 {
-    public interface IUnitOfWork<CTX> : IDisposable
-        where CTX : DbContext
+    public interface IUnitOfWork : IDisposable
     {
         /// <summary>
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IGenericRepository{TEntity}"/> interface.</returns>
-        IGenericRepository<TEntity, CTX> GetRepository<TEntity>() where TEntity : class;
+        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Saves all changes made in this context to the database.

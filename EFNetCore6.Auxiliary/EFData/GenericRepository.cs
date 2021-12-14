@@ -7,16 +7,15 @@ namespace EFNetCore6.Auxiliary.EFData
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)
     /// </summary>
-    public class GenericRepository<T,CTX> : IGenericRepository<T,CTX>
+    public class GenericRepository<T> : IGenericRepository<T>
         where T : class
-        where CTX : DbContext
     {
         private readonly DbSet<T> _dbSet;
-        private readonly CTX _context;
+        private readonly DbContext _context;
         /// <summary>
         /// Ctor with DI
         /// </summary>
-        public GenericRepository(CTX context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();

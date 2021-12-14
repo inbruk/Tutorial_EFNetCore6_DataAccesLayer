@@ -7,9 +7,8 @@ namespace EFNetCore6.Auxiliary.EFData
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)
     /// </summary>
-    public interface IGenericRepository<T,CTX>
+    public interface IGenericRepository<T>
         where T : class
-        where CTX : DbContext
     {
         /// <summary>
         /// Persists all updates to the data source

@@ -2,12 +2,17 @@
 
 namespace EFNetCore6.Auxiliary.EFData
 {
-    public class UnitOfWork<CTX> : IUnitOfWork<CTX>
-        where CTX : DbContext, new()
+    public class UnitOfWork : IUnitOfWork
     {
         private bool _disposed;
-        private CTX _dbContext = new CTX();
-        private Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
+        private DbContext _dbContext;
+        private Dictionary<Type, object> _repositories;
+
+        public UnitOfWork(DbContext dbc)
+        {
+            _dbContext = dbc;
+            _repositories = new Dictionary<Type, object>();
+        }
 
         /// <summary>
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
@@ -15,7 +20,7 @@ namespace EFNetCore6.Auxiliary.EFData
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repositry</param>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>An instance of type inherited from <see cref="IGenericRepository{TEntity}"/> interface.</returns>
-        public IGenericRepository<TEntity,CTX> GetRepository<TEntity>() 
+        public IGenericRepository<TEntity> GetRepository<TEntity>() 
             where TEntity : class
         {
             if (_repositories == null)
@@ -26,10 +31,10 @@ namespace EFNetCore6.Auxiliary.EFData
             var type = typeof(TEntity);
             if (!_repositories.ContainsKey(type))
             {
-                _repositories[type] = new GenericRepository<TEntity,CTX>(_dbContext);
+                _repositories[type] = new GenericRepository<TEntity>(_dbContext);
             }
 
-            return (IGenericRepository<TEntity,CTX>)_repositories[type];
+            return (IGenericRepository<TEntity>)_repositories[type];
         }
 
         /// <summary>

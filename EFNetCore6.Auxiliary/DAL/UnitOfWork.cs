@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EFNetCore6.Auxiliary.EFData
+namespace EFNetCore6.Auxiliary.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
         private bool _disposed;
-        private DbContext _dbContext;
-        private Dictionary<Type, object> _repositories;
+        protected DbContext _dbContext;
+        protected Dictionary<Type, object> _repositories;
 
         public UnitOfWork(DbContext dbc)
         {

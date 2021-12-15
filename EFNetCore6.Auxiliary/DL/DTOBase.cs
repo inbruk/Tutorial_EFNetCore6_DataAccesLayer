@@ -1,4 +1,4 @@
-﻿namespace EFNetCore6.Auxiliary.EFData
+﻿namespace EFNetCore6.Auxiliary.DAL
 {
     public class DTOBase
     {

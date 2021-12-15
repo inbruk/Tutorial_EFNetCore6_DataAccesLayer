@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EFNetCore6.Auxiliary.EFData
+namespace EFNetCore6.Auxiliary.DAL
 {
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)

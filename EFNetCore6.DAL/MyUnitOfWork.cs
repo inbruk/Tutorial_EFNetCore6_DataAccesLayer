@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
-using EFNetCore6.Auxiliary.EFData;
-using EFNetCore6.DTO;
+using EFNetCore6.Auxiliary.DI;
+using EFNetCore6.Auxiliary.DAL;
+using EFNetCore6.DAL.DI;
 using EFNetCore6.DL;
 
 namespace EFNetCore6.DAL
@@ -15,7 +16,7 @@ namespace EFNetCore6.DAL
     public class MyUnitOfWork: UnitOfWork
     {
         public MyUnitOfWork()
-            : base(new MyDbContext()) 
+            : base( LazyBuilderAndHolder<DbContext, MyDbContext, MyDbContextFactory>.getInstance() )
         {
         }
     }

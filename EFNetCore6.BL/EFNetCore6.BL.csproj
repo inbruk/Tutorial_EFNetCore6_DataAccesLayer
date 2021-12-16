@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Collection" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFNetCore6.Auxiliary\EFNetCore6.Auxiliary.csproj" />
+    <ProjectReference Include="..\EFNetCore6.DAL\EFNetCore6.DAL.csproj" />
+    <ProjectReference Include="..\EFNetCore6.DTO\EFNetCore6.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

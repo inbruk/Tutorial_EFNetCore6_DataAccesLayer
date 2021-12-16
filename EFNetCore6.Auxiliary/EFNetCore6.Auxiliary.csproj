@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Bl\" />
+    <Folder Include="BL\" />
   </ItemGroup>
 
 </Project>

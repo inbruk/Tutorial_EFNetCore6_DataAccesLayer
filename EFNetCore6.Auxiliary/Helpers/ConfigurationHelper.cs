@@ -16,7 +16,7 @@ namespace EFNetCore6.Auxiliary.Helpers
             _confRoot = builder.Build();
         }
 
-        public string GetItem(string section, string item)
+        public virtual string GetItem(string section, string item)
         {
             if (string.IsNullOrEmpty(section))
                 throw new ArgumentNullException(nameof(section));

@@ -3,6 +3,6 @@
     public class SimpleFactory<I,T>: ISimpleFactory<I>
         where T : class, I, new()
     {
-        public I Create() => new T();
+        public virtual I Create() => new T();
     }
 }

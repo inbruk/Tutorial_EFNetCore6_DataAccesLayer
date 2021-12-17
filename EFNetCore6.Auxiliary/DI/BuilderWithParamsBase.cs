@@ -8,6 +8,6 @@ namespace EFNetCore6.Auxiliary.DI
 {
     public class BuilderWithParamsBase<I,T>
     {
-        protected I CheckNullAndConvert(object? obj) => (I)( obj ?? throw new CantCreateObjectException(typeof(T).Name) );
+        protected virtual I CheckNullAndConvert(object? obj) => (I)( obj ?? throw new CantCreateObjectException(typeof(T).Name) );
     }
 }

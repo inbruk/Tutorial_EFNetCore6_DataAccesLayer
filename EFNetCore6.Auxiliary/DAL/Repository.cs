@@ -7,7 +7,7 @@ namespace EFNetCore6.Auxiliary.DAL
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)
     /// </summary>
-    public class GenericRepository<T> : IGenericRepository<T>
+    public class Repository<T> : IRepository<T>
         where T : class
     {
         private readonly DbSet<T> _dbSet;
@@ -15,7 +15,7 @@ namespace EFNetCore6.Auxiliary.DAL
         /// <summary>
         /// Ctor with DI
         /// </summary>
-        public GenericRepository(DbContext context)
+        public Repository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();

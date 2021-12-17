@@ -7,7 +7,7 @@ namespace EFNetCore6.Auxiliary.DAL
     /// <summary>
     /// Generic repository provide all base needed methods (CRUD)
     /// </summary>
-    public interface IGenericRepository<T>
+    public interface IRepository<T>
         where T : class
     {
         /// <summary>

@@ -19,8 +19,8 @@ namespace EFNetCore6.Auxiliary.DAL
         /// </summary>
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repositry</param>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
-        /// <returns>An instance of type inherited from <see cref="IGenericRepository{TEntity}"/> interface.</returns>
-        public virtual IGenericRepository<TEntity> GetRepository<TEntity>() 
+        /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
+        public virtual IRepository<TEntity> GetRepository<TEntity>() 
             where TEntity : class
         {
             if (_repositories == null)
@@ -31,10 +31,10 @@ namespace EFNetCore6.Auxiliary.DAL
             var type = typeof(TEntity);
             if (!_repositories.ContainsKey(type))
             {
-                _repositories[type] = new GenericRepository<TEntity>(_dbContext);
+                _repositories[type] = new Repository<TEntity>(_dbContext);
             }
 
-            return (IGenericRepository<TEntity>)_repositories[type];
+            return (IRepository<TEntity>)_repositories[type];
         }
 
         /// <summary>

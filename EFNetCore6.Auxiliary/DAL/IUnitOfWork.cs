@@ -8,8 +8,8 @@ namespace EFNetCore6.Auxiliary.DAL
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
-        /// <returns>An instance of type inherited from <see cref="IGenericRepository{TEntity}"/> interface.</returns>
-        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+        /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
+        IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Saves all changes made in this context to the database.

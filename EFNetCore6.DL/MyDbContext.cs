@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 using EFNetCore6.DL.Entity;
 using EFNetCore6.Auxiliary.Helpers;
+using EFNetCore6.DL.DI;
 
 namespace EFNetCore6.DL
 {
@@ -23,7 +24,7 @@ namespace EFNetCore6.DL
         public DbSet<Person> Persons { get; set; }
         public MyDbContext()
         {
-            _connectionString = Configuration.GetItem(SectionName, ItemName);
+            _connectionString = new ConfigurationHelperFactory().Create().GetItem(SectionName, ItemName);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

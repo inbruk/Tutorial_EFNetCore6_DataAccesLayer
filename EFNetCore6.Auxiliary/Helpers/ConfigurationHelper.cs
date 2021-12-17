@@ -2,12 +2,12 @@
 
 namespace EFNetCore6.Auxiliary.Helpers
 {
-    public static class Configuration
+    public class ConfigurationHelper : IConfigurationHelper
     {
         private const string appSettingsFileName = "app_settings.json";
-        private static IConfigurationRoot _confRoot;
+        private IConfigurationRoot _confRoot;
 
-        static Configuration()
+        public ConfigurationHelper()
         {
             var builder = new ConfigurationBuilder()
                                         .SetBasePath(Directory.GetCurrentDirectory())
@@ -16,7 +16,7 @@ namespace EFNetCore6.Auxiliary.Helpers
             _confRoot = builder.Build();
         }
 
-        public static string GetItem(string section, string item)
+        public string GetItem(string section, string item)
         {
             if (string.IsNullOrEmpty(section))
                 throw new ArgumentNullException(nameof(section));

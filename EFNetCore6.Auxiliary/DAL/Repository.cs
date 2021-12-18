@@ -22,6 +22,15 @@ namespace EFNetCore6.Auxiliary.DAL
         }
 
         /// <summary>
+        /// Get count of all items
+        /// </summary>
+        public int GetAllCount()
+        {
+            int result = _dbSet.Count();
+            return result;
+        }
+
+        /// <summary>
         /// Get first entity by predicate 
         /// </summary>
         /// <param name="predicate">LINQ predicate</param>

@@ -21,6 +21,11 @@ namespace EFNetCore6.Auxiliary.DAL
         Task SaveChangesAsync();
 
         /// <summary>
+        /// Get count of all items
+        /// </summary>
+        int GetAllCount();
+
+        /// <summary>
         /// Get first entity by predicate 
         /// </summary>
         /// <param name="predicate">LINQ predicate</param>

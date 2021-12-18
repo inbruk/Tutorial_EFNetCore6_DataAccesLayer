@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EFNetCore6.Auxiliary.DAL;
+using EFNetCore6.Auxiliary.Helpers;
+
 namespace EFNetCore6.Auxiliary.BL
 {
-    public interface ICRUDRepository<DTO, TID>
+    public interface ICRUDRepository<DTO> : IReadOnlyRepository<DTO>
+        where DTO : DTOBase
     {
-        List<DTO> ReadAll();
-
         void Create(DTO newDTO);
         DTO CreateAndGet(DTO newDTO);
-        DTO Read(TID id);
         void Update(DTO dtoItem);
-        void Delete(TID id);
-                
+        void Delete(Guid id);
+    // ----------------------------------------------              
         void Create(List<DTO> newDTOList);
         List<DTO> CreateAndGet(List<DTO> newDTOList);
-        List<DTO> Read(List<TID> idList);
         void Update(List<DTO> dtoList); 
-        void Delete(List<TID> idList);
+        void Delete(List<Guid> idList);
     }
 }

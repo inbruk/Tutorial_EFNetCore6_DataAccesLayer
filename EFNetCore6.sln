@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFNetCore6.DTO", "EFNetCore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFNetCore6.Test", "EFNetCore6.Test\EFNetCore6.Test.csproj", "{FA1E594F-B21F-4F9F-B462-22B893BB41F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFNetCore6.BL", "EFNetCore6.BL\EFNetCore6.BL.csproj", "{3DA5855E-58B1-4766-A4F6-8561494EFBC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFNetCore6.BL", "EFNetCore6.BL\EFNetCore6.BL.csproj", "{3DA5855E-58B1-4766-A4F6-8561494EFBC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD77232A-3A6A-48E4-8942-C761AAD0C9AB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

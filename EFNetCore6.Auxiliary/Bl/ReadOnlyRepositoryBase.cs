@@ -21,14 +21,14 @@ namespace EFNetCore6.Auxiliary.BL
         public int MaximumAcceptablePerformedRowsCount { get; protected set; }
         protected IMappingHelper? _mappingHelper = null;
         protected IUnitOfWork? _unitOfWork = null;
-        public void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows)
+        public virtual void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows)
         {            
             _mappingHelper = mh;
             _mappingHelper.AddMaps(new List<(Type, Type)> { (typeof(DTO), typeof(ENT)) });
             _unitOfWork = uw;
             MaximumAcceptablePerformedRowsCount = maxRows;           
         }
-        public void CheckPreset()
+        protected virtual void CheckPreset()
         {
             if (_mappingHelper == null) 
                 throw new NullReferenceException("_mappingHelper");
@@ -36,7 +36,7 @@ namespace EFNetCore6.Auxiliary.BL
             if (_unitOfWork == null)
                 throw new NullReferenceException("_unitOfWork");
         }
-        public void CheckPresetAndParams(object? param, string paramFullName, int? rowsCount)
+        protected virtual void CheckPresetAndParams(object? param, string paramFullName, int? rowsCount)
         {
             CheckPreset();
 
@@ -46,12 +46,12 @@ namespace EFNetCore6.Auxiliary.BL
             if (rowsCount != null && rowsCount > MaximumAcceptablePerformedRowsCount)
                 throw new MaxAcceptPerfRowsCountExceededException((int)rowsCount, MaximumAcceptablePerformedRowsCount);
         }
-        public int GetAllCount()
+        public virtual int GetAllCount()
         {
             int count = _unitOfWork.GetRepository<ENT>().GetAllCount();
             return count;
         }
-        public DTO? Read(Guid id)
+        public virtual DTO? Read(Guid id)
         {
             CheckPreset();
             var ent = _unitOfWork.GetRepository<ENT>().FirstOrDefault(x => x.Id == id);
@@ -60,14 +60,14 @@ namespace EFNetCore6.Auxiliary.BL
             var dto = _mappingHelper.Map<ENT, DTO>(ent);
             return dto;
         }
-        public List<DTO> ReadAll()
+        public virtual List<DTO> ReadAll()
         {
             CheckPreset();
             var entList = _unitOfWork.GetRepository<ENT>().GetAll().ToList();
             var dtoList = _mappingHelper.Map<ENT, DTO>(entList);
             return dtoList;
         }
-        public List<DTO> Read(List<Guid> idList)
+        public virtual List<DTO> Read(List<Guid> idList)
         {
             CheckPresetAndParams(idList, @"ReadOnlyRepositoryBase.Read({nameof(idList)}", GetAllCount() );
             var entList = _unitOfWork.GetRepository<ENT>().FindBy( x => idList.Contains(x.Id) ).ToList();

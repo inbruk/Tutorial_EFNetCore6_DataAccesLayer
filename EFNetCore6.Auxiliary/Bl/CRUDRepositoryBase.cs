@@ -51,7 +51,7 @@ namespace EFNetCore6.Auxiliary.BL
             _unitOfWork.SaveChanges();
         }
         // ------------------------------------------------------------------------------------------------
-        public void CheckPresetAndParams<T>(object? param, string paramFullName, List<T> dtoList)
+        protected virtual void CheckPresetAndParams<T>(object? param, string paramFullName, List<T> dtoList)
         {
             CheckPreset();
 

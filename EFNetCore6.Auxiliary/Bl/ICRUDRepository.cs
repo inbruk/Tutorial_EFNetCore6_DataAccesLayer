@@ -19,7 +19,7 @@ namespace EFNetCore6.Auxiliary.BL
     // ----------------------------------------------              
         void Create(List<DTO> newDTOList);
         List<DTO> CreateAndGet(List<DTO> newDTOList);
-        void Update(List<DTO> dtoList); 
+        void Update(List<DTO> dtoList);
         void Delete(List<Guid> idList);
     }
 }

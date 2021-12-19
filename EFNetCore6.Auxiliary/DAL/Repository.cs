@@ -139,6 +139,15 @@ namespace EFNetCore6.Auxiliary.DAL
         }
 
         /// <summary>
+        /// Update entities
+        /// </summary>
+        public virtual void UpdateRange(IEnumerable<T> entities)
+        {
+            foreach(var item in entities)
+                _context.Entry(item).State = EntityState.Modified;
+        }
+
+        /// <summary>
         /// Persists all updates to the data source
         /// </summary>
         public virtual void SaveChanges()

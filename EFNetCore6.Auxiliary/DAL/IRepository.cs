@@ -99,7 +99,6 @@ namespace EFNetCore6.Auxiliary.DAL
         /// <summary>
         /// Remove entities from database
         /// </summary>
-        /// <param name="entity">Entity object</param>
         void DeleteRange(IEnumerable<T> entity);
 
         /// <summary>
@@ -107,6 +106,11 @@ namespace EFNetCore6.Auxiliary.DAL
         /// </summary>
         /// <param name="entity">Entity object</param>
         void Update(T entity);
+
+        /// <summary>
+        /// Update entities
+        /// </summary>
+        void UpdateRange(IEnumerable<T> entities);
 
         /// <summary>
         /// Order by

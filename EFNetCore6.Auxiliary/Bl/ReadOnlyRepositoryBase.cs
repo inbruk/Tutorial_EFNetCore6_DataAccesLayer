@@ -42,8 +42,8 @@ namespace EFNetCore6.Auxiliary.BL
             if (param == null)
                 throw new ArgumentNullException(paramFullName);
 
-            if (rowsCount!=null && rowsCount > MaximumAcceptablePerformedRowsCount)
-                throw new Exception("Превышено максимальное количество строк, обрабатываемых за 1 запрос. См. MaximumAcceptablePerformedRowsCount");
+            if (rowsCount != null && rowsCount > MaximumAcceptablePerformedRowsCount)
+                throw new MaxAcceptPerfRowsCountExceededException((int)rowsCount, MaximumAcceptablePerformedRowsCount);
         }
         public int GetAllCount()
         {
@@ -68,8 +68,7 @@ namespace EFNetCore6.Auxiliary.BL
         }
         public List<DTO> Read(List<Guid> idList)
         {
-            int rowsCount = GetAllCount();
-            CheckPresetAndParams(idList, @"ReadOnlyRepositoryBase.Read({nameof(idList)}", rowsCount);
+            CheckPresetAndParams(idList, @"ReadOnlyRepositoryBase.Read({nameof(idList)}", GetAllCount() );
             var entList = _unitOfWork.GetRepository<ENT>().FindBy( x => idList.Contains(x.Id) ).ToList();
             var dtoList = _mappingHelper.Map<ENT, DTO>(entList);
             return dtoList;

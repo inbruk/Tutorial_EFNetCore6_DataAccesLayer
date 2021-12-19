@@ -8,6 +8,11 @@ namespace EFNetCore6.Auxiliary.DAL
         protected DbContext _dbContext;
         protected Dictionary<Type, object> _repositories;
 
+        private UnitOfWork() 
+        {
+            throw new NotImplementedException(); 
+        }
+
         public UnitOfWork(DbContext dbc)
         {
             _dbContext = dbc;

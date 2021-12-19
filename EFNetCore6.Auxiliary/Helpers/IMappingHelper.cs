@@ -2,7 +2,8 @@
 {
     public interface IMappingHelper
     {
-        void SetMaps(List<Tuple<Type, Type>> listOfMaps);
+        void AddMaps(List<(Type, Type)> listOfMaps);
+        void Configure();
         DSTT Map<SRCT, DSTT>(SRCT src);
         List<DSTT> Map<SRCT, DSTT>(List<SRCT> src);
     }

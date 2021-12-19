@@ -16,7 +16,8 @@ namespace EFNetCore6.DAL
     public class MyUnitOfWork: UnitOfWork
     {
         public MyUnitOfWork()
-            : base( LazyBuilderAndHolder<DbContext, MyDbContext, MyDbContextFactory>.getInstance() )
+            : base( LazyBuilderAndHolder<DbContext, MyDbContext, MyDbContextFactory>.getInstance())       // common dbContext for all UnitOfWorks
+            // : base( new MyDbContextFactory().Create() )                                                  // one DbContext per one UnitOfWork 
         {
         }
     }

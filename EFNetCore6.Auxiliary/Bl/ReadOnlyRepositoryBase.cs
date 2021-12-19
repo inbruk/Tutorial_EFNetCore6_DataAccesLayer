@@ -22,10 +22,11 @@ namespace EFNetCore6.Auxiliary.BL
         protected IMappingHelper? _mappingHelper = null;
         protected IUnitOfWork? _unitOfWork = null;
         public void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows)
-        {
+        {            
             _mappingHelper = mh;
+            _mappingHelper.AddMaps(new List<(Type, Type)> { (typeof(DTO), typeof(ENT)) });
             _unitOfWork = uw;
-            MaximumAcceptablePerformedRowsCount = maxRows;
+            MaximumAcceptablePerformedRowsCount = maxRows;           
         }
         public void CheckPreset()
         {

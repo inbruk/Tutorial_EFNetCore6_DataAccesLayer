@@ -22,6 +22,8 @@ namespace EFNetCore6.DL
 
         public DbSet<Car> Cars { get; set; }
         public DbSet<Person> Persons { get; set; }
+        public DbSet<LivingAddress> LivingAddresses { get; set; }
+        public DbSet<VwPersonCarLivingAddress> VwPersonCarLivingAddress { get; set; }
         public MyDbContext()
         {
             _connectionString = new ConfigurationHelperFactory().Create().GetItem(SectionName, ItemName);
@@ -29,6 +31,13 @@ namespace EFNetCore6.DL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<VwPersonCarLivingAddress>()
+                .ToView(nameof(VwPersonCarLivingAddress))
+                .HasKey(x => x.PersonId);
         }
     }
 

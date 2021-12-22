@@ -20,6 +20,28 @@ namespace EFNetCore6.Auxiliary.DAL
         }
 
         /// <summary>
+        /// Gets the specified readonly repository for the <typeparamref name="TEntity"/>.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <returns>An instance of type inherited from <see cref="IReadOnlyRepository{TEntity}"/> interface.</returns>
+        public virtual IReadOnlyRepository<TEntity> GetReadOnlyRepository<TEntity>() 
+            where TEntity : class
+        {
+            if (_repositories == null)
+            {
+                _repositories = new Dictionary<Type, object>();
+            }
+
+            var type = typeof(TEntity);
+            if (!_repositories.ContainsKey(type))
+            {
+                _repositories[type] = new ReadOnlyRepository<TEntity>(_dbContext);
+            }
+
+            return (IRepository<TEntity>)_repositories[type];
+        }
+
+        /// <summary>
         /// Gets the specified repository for the <typeparamref name="TEntity"/>.
         /// </summary>
         /// <param name="hasCustomRepository"><c>True</c> if providing custom repositry</param>

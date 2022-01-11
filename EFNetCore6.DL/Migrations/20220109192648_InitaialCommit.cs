@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EFNetCore6.DL.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitaialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace EFNetCore6.DL.Migrations
                 name: "Persons",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -27,7 +27,7 @@ namespace EFNetCore6.DL.Migrations
                 name: "Cars",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -47,10 +47,10 @@ namespace EFNetCore6.DL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LivingAddress",
+                name: "LivingAddresses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Locality = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -61,9 +61,9 @@ namespace EFNetCore6.DL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LivingAddress", x => x.Id);
+                    table.PrimaryKey("PK_LivingAddresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LivingAddress_Persons_PersonId",
+                        name: "FK_LivingAddresses_Persons_PersonId",
                         column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
@@ -76,8 +76,8 @@ namespace EFNetCore6.DL.Migrations
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LivingAddress_PersonId",
-                table: "LivingAddress",
+                name: "IX_LivingAddresses_PersonId",
+                table: "LivingAddresses",
                 column: "PersonId");
         }
 
@@ -87,7 +87,7 @@ namespace EFNetCore6.DL.Migrations
                 name: "Cars");
 
             migrationBuilder.DropTable(
-                name: "LivingAddress");
+                name: "LivingAddresses");
 
             migrationBuilder.DropTable(
                 name: "Persons");

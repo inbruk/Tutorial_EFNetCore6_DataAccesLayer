@@ -9,7 +9,7 @@ namespace EFNetCore6.DL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-                CREATE VIEW vwPersonCarLivingAddress AS
+                CREATE VIEW vwPersonCarLivingAddresses AS
                 SELECT 
                   TP.Id AS PersonId
                  ,TP.FirstName
@@ -30,15 +30,14 @@ namespace EFNetCore6.DL.Migrations
                  ,TA.Apartment
                 FROM dbo.Persons AS TP
                 LEFT JOIN Cars AS TC ON TP.Id = TC.PersonId
-                LEFT JOIN LivingAddress AS TA ON TP.Id = TA.PersonId
+                LEFT JOIN LivingAddresses AS TA ON TP.Id = TA.PersonId
             ");
         }
-
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"
-                drop view vwPersonCarLivingAddress;
-            ");
+                    drop view vwPersonCarLivingAddresses;
+                ");
         }
     }
 }

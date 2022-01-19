@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using EFNetCore6.Auxiliary.DTO;
 using EFNetCore6.Auxiliary.DAL;
 using EFNetCore6.Auxiliary.Helpers;
 

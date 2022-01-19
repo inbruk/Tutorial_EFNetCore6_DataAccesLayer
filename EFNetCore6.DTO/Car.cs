@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EFNetCore6.Auxiliary.DAL;
+using EFNetCore6.Auxiliary.DTO;
 
 namespace EFNetCore6.DTO
 {

@@ -2,7 +2,7 @@
 
 namespace EFNetCore6.DL.Entity
 {
-    public class DictionaryValue
+    public class DictionaryValue : ADTO.Dictionary
     {
     }
 }

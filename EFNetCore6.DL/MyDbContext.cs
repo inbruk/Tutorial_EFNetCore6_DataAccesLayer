@@ -20,6 +20,8 @@ namespace EFNetCore6.DL
         const string ItemName = "MigrationsDbConnection";
         private string _connectionString;
 
+        public DbSet<Dictionary> Dictionaries { get; set; }
+        public DbSet<DictionaryValue> DictionaryValues { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<LivingAddress> LivingAddresses { get; set; }
@@ -35,6 +37,14 @@ namespace EFNetCore6.DL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Dictionary>()
+               .Property(p => p.Id)
+               .HasDefaultValueSql("NEWID()");
+
+            modelBuilder.Entity<DictionaryValue>()
+               .Property(p => p.Id)
+               .HasDefaultValueSql("NEWID()");
 
             modelBuilder.Entity<Person>()
                .Property(p => p.Id)

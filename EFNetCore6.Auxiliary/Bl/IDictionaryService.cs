@@ -12,8 +12,8 @@ namespace EFNetCore6.Auxiliary.BL
         DTO.Dictionary? ReadDicById(Guid dicId);
         DTO.Dictionary? ReadDicById(int enumId);
         List<DTO.DictionaryValue> ReadValuesByDicId(Guid dicId);
-        List<DTO.DictionaryValue>? ReadValuesByDicEnumId(int enumId);
-        DTO.DictionaryValue? ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId);
+        List<DTO.DictionaryValue> ReadValuesByDicEnumId(int enumId);
+        DTO.DictionaryValue ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId);
         DTO.DictionaryValue ReadValueByDicIdAndEnumId(int dicId, int enumId);
     }
 }

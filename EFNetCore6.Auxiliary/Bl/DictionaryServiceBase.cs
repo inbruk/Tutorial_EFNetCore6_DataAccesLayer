@@ -49,14 +49,15 @@ namespace EFNetCore6.Auxiliary.BL
             List<DTO.DictionaryValue> result = _mappingHelper.Map<DVE, DTO.DictionaryValue>(ents);
             return result;
         }
-        public List<DTO.DictionaryValue>? ReadValuesByDicEnumId(int enumId)
+        public List<DTO.DictionaryValue> ReadValuesByDicEnumId(int enumId)
         {
             DTO.Dictionary? currDic = ReadDicById(enumId);
-            if (currDic == null) return null;
+            if (currDic == null) 
+                throw new Exception("Aquired dictionary not found !");
             List<DTO.DictionaryValue> result = ReadValuesByDicId(currDic.Id);
             return result;
         }
-        public DTO.DictionaryValue? ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId)
+        public DTO.DictionaryValue ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId)
         {
             CheckPreset();
             var result = _unitOfWork.GetRepository<DVE>().FirstOrDefault(x => x.Id == dicId && x.DictionaryId == dicValId);

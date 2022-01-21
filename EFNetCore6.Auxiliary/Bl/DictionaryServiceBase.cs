@@ -2,9 +2,9 @@
 using EFNetCore6.Auxiliary.DAL;
 using EFNetCore6.Auxiliary.Helpers;
 
-namespace EFNetCore6.Auxiliary.Bl
+namespace EFNetCore6.Auxiliary.BL
 {
-    public class DictionaryService<DE, DVE>
+    public class DictionaryService<DE, DVE> : IDictionaryServiceBase<DE, DVE>
         where DE : Dictionary
         where DVE : DictionaryValue
     {

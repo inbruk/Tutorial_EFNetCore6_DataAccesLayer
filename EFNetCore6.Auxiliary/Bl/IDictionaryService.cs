@@ -2,7 +2,7 @@
 using EFNetCore6.Auxiliary.DAL;
 using EFNetCore6.Auxiliary.Helpers;
 
-namespace EFNetCore6.Auxiliary.Bl
+namespace EFNetCore6.Auxiliary.BL
 {
     public interface IDictionaryServiceBase<DE, DVE>
         where DE : Dictionary

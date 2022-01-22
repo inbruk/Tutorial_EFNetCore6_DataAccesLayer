@@ -1,4 +1,5 @@
 ﻿using EFNetCore6.Auxiliary.DI;
+using EFNetCore6.Auxiliary.BL;
 using EFNetCore6.Auxiliary.Helpers;
 using EFNetCore6.Auxiliary.DAL;
 
@@ -10,14 +11,15 @@ using ENT = EFNetCore6.DL.Entity;
 
 namespace EFNetCore6.BL
 {
-    public class DictionaryService : ABL.DictionaryService<ENT.Dictionary, ENT.DictionaryValue>, ABL.IDictionaryService
+    public class CarService : CRUDRepositoryBase<DTO.Car, ENT.Car>, ICRUDRepository<DTO.Car>
     {
-        protected const int maxFetchedRows = 2000;
-        public DictionaryService()
+        protected const int maxFetchedRows = 1000;
+        public CarService()
         {
             IMappingHelper mappingHelper = LazyBuilderAndHolder<IMappingHelper, MappingHelper, MappingHelperFactory>.getInstance();
             IUnitOfWork unitOfWork = LazyBuilderAndHolder<IUnitOfWork, MyUnitOfWork, MyUnitOfWorkFactory>.getInstance();
             Configure(mappingHelper, unitOfWork, maxFetchedRows);
         }
+
     }
 }

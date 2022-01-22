@@ -4,14 +4,14 @@ using EFNetCore6.Auxiliary.Helpers;
 
 namespace EFNetCore6.Auxiliary.BL
 {
-    public class DictionaryService<DE, DVE> : IDictionaryServiceBase<DE, DVE>
+    public class DictionaryService<DE, DVE> : IDictionaryService
         where DE : Dictionary
         where DVE : DictionaryValue
     {
         public int MaximumAcceptablePerformedRowsCount { get; protected set; }
         protected IMappingHelper? _mappingHelper = null;
         protected IUnitOfWork? _unitOfWork = null;
-        public virtual void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows)
+        protected virtual void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows)
         {
             _mappingHelper = mh;
             _mappingHelper.AddMaps(new List<(Type, Type)> { (typeof(DE), typeof(Dictionary)), (typeof(DVE), typeof(DictionaryValue)) });
@@ -26,7 +26,7 @@ namespace EFNetCore6.Auxiliary.BL
             if (_unitOfWork == null)
                 throw new NullReferenceException("_unitOfWork");
         }
-        public DTO.Dictionary? ReadDicById(Guid dicId)
+        public virtual DTO.Dictionary? ReadDicById(Guid dicId)
         {
             CheckPreset();
             var ent = _unitOfWork.GetRepository<DE>().FirstOrDefault(x => x.Id == dicId);
@@ -34,7 +34,7 @@ namespace EFNetCore6.Auxiliary.BL
             DTO.Dictionary res = _mappingHelper.Map<DE, DTO.Dictionary>(ent);
             return res;
         }
-        public DTO.Dictionary? ReadDicById(int enumId)
+        public virtual DTO.Dictionary? ReadDicById(int enumId)
         {
             CheckPreset();
             var ent = _unitOfWork.GetRepository<DE>().FirstOrDefault(x => x.EnumId == enumId);
@@ -42,14 +42,14 @@ namespace EFNetCore6.Auxiliary.BL
             DTO.Dictionary res = _mappingHelper.Map<DE, DTO.Dictionary>(ent);
             return res;
         }
-        public List<DTO.DictionaryValue> ReadValuesByDicId(Guid dicId)
+        public virtual List<DTO.DictionaryValue> ReadValuesByDicId(Guid dicId)
         {
             CheckPreset();
             var ents = _unitOfWork.GetRepository<DVE>().FindBy(x => x.DictionaryId == dicId).ToList();
             List<DTO.DictionaryValue> result = _mappingHelper.Map<DVE, DTO.DictionaryValue>(ents);
             return result;
         }
-        public List<DTO.DictionaryValue> ReadValuesByDicEnumId(int enumId)
+        public virtual List<DTO.DictionaryValue> ReadValuesByDicEnumId(int enumId)
         {
             DTO.Dictionary? currDic = ReadDicById(enumId);
             if (currDic == null) 
@@ -57,13 +57,13 @@ namespace EFNetCore6.Auxiliary.BL
             List<DTO.DictionaryValue> result = ReadValuesByDicId(currDic.Id);
             return result;
         }
-        public DTO.DictionaryValue ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId)
+        public virtual DTO.DictionaryValue ReadValueByDicIdAndEnumId(Guid dicId, Guid dicValId)
         {
             CheckPreset();
             var result = _unitOfWork.GetRepository<DVE>().FirstOrDefault(x => x.Id == dicId && x.DictionaryId == dicValId);
             return result;
         }
-        public DTO.DictionaryValue ReadValueByDicIdAndEnumId(int dicId, int enumId)
+        public virtual DTO.DictionaryValue ReadValueByDicIdAndEnumId(int dicId, int enumId)
         {
             DTO.Dictionary? currDic = ReadDicById(dicId);
             var result = _unitOfWork.GetRepository<DVE>().FirstOrDefault(x => x.Id == currDic.Id && x.EnumId == enumId);

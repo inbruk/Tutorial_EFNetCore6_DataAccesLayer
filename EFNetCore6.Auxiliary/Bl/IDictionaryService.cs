@@ -4,11 +4,8 @@ using EFNetCore6.Auxiliary.Helpers;
 
 namespace EFNetCore6.Auxiliary.BL
 {
-    public interface IDictionaryServiceBase<DE, DVE>
-        where DE : Dictionary
-        where DVE : DictionaryValue
+    public interface IDictionaryService
     {
-        void Configure(IMappingHelper mh, IUnitOfWork uw, int maxRows);
         DTO.Dictionary? ReadDicById(Guid dicId);
         DTO.Dictionary? ReadDicById(int enumId);
         List<DTO.DictionaryValue> ReadValuesByDicId(Guid dicId);

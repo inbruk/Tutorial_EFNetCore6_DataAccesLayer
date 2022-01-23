@@ -1,4 +1,5 @@
 ﻿using EFNetCore6.Auxiliary.DI;
+using EFNetCore6.Auxiliary.BL;
 using EFNetCore6.Auxiliary.Helpers;
 using EFNetCore6.Auxiliary.DAL;
 
@@ -10,7 +11,14 @@ using ENT = EFNetCore6.DL.Entity;
 
 namespace EFNetCore6.BL
 {
-    public class PersonService
+    public class PersonService : CRUDRepositoryBase<DTO.Person, ENT.Person>, ICRUDRepository<DTO.Person>
     {
+        protected const int maxFetchedRows = 1000;
+        public PersonService()
+        {
+            IMappingHelper mappingHelper = LazyBuilderAndHolder<IMappingHelper, MappingHelper, MappingHelperFactory>.getInstance();
+            IUnitOfWork unitOfWork = LazyBuilderAndHolder<IUnitOfWork, MyUnitOfWork, MyUnitOfWorkFactory>.getInstance();
+            Configure(mappingHelper, unitOfWork, maxFetchedRows);
+        }
     }
 }

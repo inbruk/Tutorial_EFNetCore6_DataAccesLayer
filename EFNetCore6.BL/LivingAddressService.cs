@@ -20,6 +20,5 @@ namespace EFNetCore6.BL
             IUnitOfWork unitOfWork = LazyBuilderAndHolder<IUnitOfWork, MyUnitOfWork, MyUnitOfWorkFactory>.getInstance();
             Configure(mappingHelper, unitOfWork, maxFetchedRows);
         }
-
     }
 }

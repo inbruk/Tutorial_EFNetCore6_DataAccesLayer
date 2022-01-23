@@ -4,6 +4,7 @@ using EFNetCore6.DL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFNetCore6.DL.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220123023016_AddDic2Person2")]
+    partial class AddDic2Person2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,8 +170,6 @@ namespace EFNetCore6.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PositionId");
-
                     b.ToTable("Persons");
                 });
 
@@ -259,15 +259,6 @@ namespace EFNetCore6.DL.Migrations
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("EFNetCore6.DL.Entity.Person", b =>
-                {
-                    b.HasOne("EFNetCore6.DL.Entity.DictionaryValue", "Position")
-                        .WithMany()
-                        .HasForeignKey("PositionId");
-
-                    b.Navigation("Position");
                 });
 
             modelBuilder.Entity("EFNetCore6.DL.Entity.Person", b =>

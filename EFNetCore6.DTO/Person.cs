@@ -14,5 +14,6 @@ namespace EFNetCore6.DTO
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
+        public Guid? PositionId { get; set; }
     }
 }

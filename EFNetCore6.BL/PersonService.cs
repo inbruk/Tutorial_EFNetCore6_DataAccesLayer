@@ -14,11 +14,20 @@ namespace EFNetCore6.BL
     public class PersonService : CRUDRepositoryBase<DTO.Person, ENT.Person>, ICRUDRepository<DTO.Person>
     {
         protected const int maxFetchedRows = 1000;
+        protected IMappingHelper _mappingHelper;
+        protected IUnitOfWork _unitOfWork;
         public PersonService()
         {
-            IMappingHelper mappingHelper = LazyBuilderAndHolder<IMappingHelper, MappingHelper, MappingHelperFactory>.getInstance();
-            IUnitOfWork unitOfWork = LazyBuilderAndHolder<IUnitOfWork, MyUnitOfWork, MyUnitOfWorkFactory>.getInstance();
-            Configure(mappingHelper, unitOfWork, maxFetchedRows);
+            _mappingHelper = LazyBuilderAndHolder<IMappingHelper, MappingHelper, MappingHelperFactory>.getInstance();
+            _unitOfWork = LazyBuilderAndHolder<IUnitOfWork, MyUnitOfWork, MyUnitOfWorkFactory>.getInstance();
+            Configure(_mappingHelper, _unitOfWork, maxFetchedRows);
+        }
+        public List<DTO.VwPersonCarLivingAddress> Read(Guid id)
+        {
+            CheckPreset();
+            var entList = _unitOfWork.GetRepository<ENT.VwPersonCarLivingAddress>().FindBy(  ).ToList();
+            var dtoList = _mappingHelper.Map<ENT.VwPersonCarLivingAddress, DTO.VwPersonCarLivingAddress>(entList);
+            return dtoList;
         }
     }
 }
